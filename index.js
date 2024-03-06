@@ -1,44 +1,4 @@
-// const express=require('express');
-// const bodyParser=require('body-parser');
-// const PORT=3000;
-// const app=express();
-// //417530Amng7w9J65e6a3d4P1
-// app.use(bodyParser.json());
-// //app.use(bodyParser.urlencoded({extended:false}));
 
-
-// app.post('/webhook',(req,res)=>{
-// console.log("called");
-// try {
-// //     if (req.body.event == 'incoming_message') {
-// //         var content = req.body.content;
-// //         var from_number = req.body.from_number;
-// //         var phone_id = req.body.phone_id;
-// // console.log("hdfihs");
-// //         console.log(content + from_number +phone_id);
-// //         // do something with the message, e.g. send an autoreply
-// //         res.json({
-// //           messages: [
-// //             { content: "Thanks for your message!" }
-// //           ]
-// //         });
-// //       }
-// console.log("hii");
-// console.log(req.body);
-
-//       res.status(200).send("ok");
-// } catch (error) {
-//     console.log(error);
-//     res.status(500).send("server error");
-// }
-    
-  
-// });
-
-
-// app.listen(PORT,()=>{
-//     console.log(`app is running on ${PORT}`);
-// })
 const express = require('express');
 const bodyParser = require('body-parser');
 
