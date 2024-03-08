@@ -49,7 +49,7 @@ app.post('/incoming', (req, res) => {
 app.post('/outgoing', (req, res) => {
   const { message } = req.body;
   console.log(message);
-  console.log(message.message_uuid);
+  // console.log(message.message_uuid);
   if (message && message.text && message.text.toLowerCase().includes('hello this is issue')) {
     const messageId = message.message_uuid;
     
