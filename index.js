@@ -105,9 +105,9 @@ if(instruction_id){
    console.log("hiii");
    console.log(req.body.message_uuid);
    console.log(message.message_uuid);
- const otherApiUrl='http//localhost:3000/issueRaised';
+//  const otherApiUrl='http//localhost:3000/issueRaised';
 
- const response=axios.post(otherApiUrl,message);
+//  const response=axios.post(otherApiUrl,message);
 
   
   res.status(200).send(response);
