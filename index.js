@@ -42,26 +42,28 @@ app.post('/incoming', (req, res) => {
     console.log("Campaign Name:", campaign_name);
     // Add more logging or processing logic as needed
     
-    res.status(200).send('Message received');
+    res.status(200).send(message);
 });
 
-// Webhook endpoint
+
+
 app.post('/outgoing', (req, res) => {
-  const  message  = req.body;
+ 
+
+  try {
+    const  message  = req.body;
 
   console.log(req.body);
    console.log("hiii");
   console.log(req.body.message_uuid);
-
-  // console.log(message.message_uuid);
-  if (message && message.text && message.text.toLowerCase().includes('hello this is issue')) {
-    const messageId = message.message_uuid;
-    
-    
-    console.log('Message ID:', messageId);
-  }
+   console.log(message.message_uuid);
+ 
   
-  res.status(200).send('Webhook received!');
+  res.status(200).send(message);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
 });
 
 // Start server
