@@ -89,7 +89,7 @@ app.post('/incoming', (req, res) => {
     res.status(200).send(message);
 });
 
-let receivedData;
+let receivedData=null;
 
 app.post('/outgoing', (req, res) => {
 
@@ -115,6 +115,8 @@ app.post('/issueRaised',async(req,res)=>{
     while (receivedData === null) {
         await new Promise(resolve => setTimeout(resolve, 1000)); 
     }
+
+    console.log("hello"+ receivedData);
     const data = receivedData;
     receivedData = null;
     console.log('Data received:', data);
