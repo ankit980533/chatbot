@@ -49,7 +49,7 @@ app.post('/incoming', (req, res) => {
 app.post('/outgoing', (req, res) => {
   const  message  = req.body;
 
-  //console.log(req.body);
+  console.log(req.body);
    console.log("hiii");
   console.log(req.body.message_uuid);
 
