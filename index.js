@@ -45,7 +45,24 @@ app.post('/incoming', (req, res) => {
     res.status(200).send('Message received');
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// Webhook endpoint
+app.post('/outgoing', (req, res) => {
+  const { message } = req.body;
+  
+  if (message && message.text && message.text.toLowerCase().includes('hello this is issue')) {
+    const messageId = message.message_uuid;
+    
+    
+    console.log('Message ID:', messageId);
+  }
+  
+  res.status(200).send('Webhook received!');
 });
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
+
