@@ -48,8 +48,9 @@ app.post('/incoming', (req, res) => {
 // Webhook endpoint
 app.post('/outgoing', (req, res) => {
   const  message  = req.body;
-  console.log(req.body);
-  // console.log(req);
+
+  //console.log(req.body);
+   console.log("hiii");
   console.log(req.body.message_uuid);
 
   // console.log(message.message_uuid);
