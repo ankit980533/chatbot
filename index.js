@@ -48,7 +48,9 @@ app.post('/incoming', (req, res) => {
 // Webhook endpoint
 app.post('/outgoing', (req, res) => {
   const { message } = req.body;
-  console.log(message);
+  console.log(req.body);
+  console.log(req);
+
   // console.log(message.message_uuid);
   if (message && message.text && message.text.toLowerCase().includes('hello this is issue')) {
     const messageId = message.message_uuid;
