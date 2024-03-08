@@ -94,11 +94,8 @@ app.post('/outgoing', (req, res) => {
  
 
   try {
-
-const instruction_id=req.body.instruction_id
-if(instruction_id){
   sendWhatsAppMessage();
-}
+
 
   const  message  = req.body;
    console.log(req.body);
@@ -110,7 +107,7 @@ if(instruction_id){
 //  const response=axios.post(otherApiUrl,message);
 
   
-  res.status(200).send(response);
+  res.status(200).send(message);
   } catch (error) {
     console.log(error);
     res.status(400).json(error);
