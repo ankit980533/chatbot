@@ -131,7 +131,7 @@ app.post('/issueRaised',async(req,res)=>{
     const data = receivedData;
     
     
-    receivedData = null;
+    // receivedData = null;
     console.log('Data received:', data);
     // const message_uuid=data.message_uuid;
     // const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
