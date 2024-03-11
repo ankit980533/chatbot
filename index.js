@@ -124,10 +124,10 @@ app.post('/issueRaised',async(req,res)=>{
     //   res.status(400).send('No data received yet');
     //   return;
     // }
+    
 
-
-      console.log("hiii");
-     console.log("hello"+ receivedData);
+    console.log("hiii");
+    console.log("hello"+ receivedData);
     const data = receivedData;
     
     
@@ -143,7 +143,7 @@ app.post('/issueRaised',async(req,res)=>{
     res.status(200).send('Data received and processed successfully');
 } catch (error) {
     console.error('Error receiving or processing data:', error);
-    res.status(500).send('Error receiving or processing data');
+    res.status(500).send(error +'errpr');
 }
   
   })
