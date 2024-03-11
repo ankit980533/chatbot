@@ -119,11 +119,11 @@ app.post('/issueRaised',async(req,res)=>{
 
     console.log("hello" + receivedData);
 
-    if (!receivedData) {
-      console.log('No data received yet');
-      res.status(400).send('No data received yet');
-      return;
-    }
+    // if (!receivedData) {
+    //   console.log('No data received yet');
+    //   res.status(400).send('No data received yet');
+    //   return;
+    // }
 
 
       console.log("hiii");
