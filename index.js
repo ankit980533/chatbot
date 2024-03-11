@@ -126,19 +126,19 @@ const instruction_id=req.body.instruction_id;
     // }
     
 
-    console.log("hiii");
-    console.log("hello"+ receivedData);
-    const data = receivedData;
+    // console.log("hiii");
+    // console.log("hello"+ receivedData);
+    // const data = receivedData;
     
     
-    // receivedData = null;
-    console.log('Data received:', data);
-    const message_id=receivedData.message_uuid;
-    const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
-      message_id,
-      instruction_id
-    ]);
-    console.log(rows[0]);
+    // // receivedData = null;
+    // console.log('Data received:', data);
+    // const message_id=receivedData.message_uuid;
+    // const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
+    //   message_id,
+    //   instruction_id
+    // ]);
+    // console.log(rows[0]);
 
     res.status(200).send('Data received and processed successfully');
 } catch (error) {
