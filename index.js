@@ -5,7 +5,7 @@ const axios=require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoose=require('mongoose');
-const Message=require('./db');
+// const Message=require('./db');
 const http=require('http');
 // Middleware to parse JSON request bodies
 app.use(bodyParser.json());
@@ -13,6 +13,15 @@ mongoose.connect("mongodb+srv://user:ankitraj@cluster0.ky8l28e.mongodb.net/")
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Error connecting to MongoDB:', err));
   
+
+  const messageSchema = new mongoose.Schema({
+    messageId: { type: String, required: true },
+    instructionId: { type: String, required: true },
+  });
+  
+  // Create a model from the schema
+  const Message = mongoose.model('Message', messageSchema);
+
   async function sendWhatsAppMessage() {
   const data = JSON.stringify({
      recipient_number: "919122058062",
