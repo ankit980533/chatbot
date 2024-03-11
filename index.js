@@ -11,7 +11,7 @@ const pool = require('./db');
 function sendWhatsAppMessage() {
   const data = JSON.stringify({
      recipient_number: "919122058062",
-     integrated_number: "916353450539",
+     integrated_number: "918287227232",
      content_type: "interactive",
      interactive: {
        type: "button",
@@ -77,7 +77,7 @@ function sendWhatsAppMessage() {
   req.end()
   }
 
-let incomingRecieved=null;
+//let incomingRecieved=null;
 
 // Route to handle incoming messages
 app.post('/incoming', (req, res) => {
@@ -116,7 +116,7 @@ app.post('/issueRaised',async(req,res)=>{
     
       }
 
-    // console.log("hello"+ receivedData);
+     console.log("hello"+ receivedData);
     const data = receivedData;
     
     
