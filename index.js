@@ -87,13 +87,14 @@ app.post('/incoming', (req, res) => {
     res.status(200).send(message);
 });
 
-// let receivedData=null;
+ let receivedData=null;
 let receivedDataPromise = null;
 app.post('/outgoing', (req, res) => {
 
   try {
   const  message  = req.body;
-  receivedDataPromise = Promise.resolve(message);
+  // receivedDataPromise = Promise.resolve(message);
+  receivedData=message;
    console.log(req.body);
    console.log("hiii");
    console.log(req.body.message_uuid);
@@ -112,10 +113,10 @@ const instruction_id=req.body.instruction_id;
 
   await sendWhatsAppMessage();
    console.log("done");
-    // while (receivedData === null) {
-    //     await new Promise(resolve => setTimeout(resolve, 100)); 
-    //   }
-    const receivedData = await receivedDataPromise; // Wait for data to be received
+    while (receivedData === null) {
+        await new Promise(resolve => setTimeout(resolve, 1000)); 
+      }
+    //const receivedData = await receivedDataPromise; // Wait for data to be received
 
     //console.log("hello" + receivedData);
 
