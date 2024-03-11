@@ -108,14 +108,16 @@ app.post('/outgoing', (req, res) => {
 });
 app.post('/issueRaised',async(req,res)=>{
   try {
+
+
     console.log(req.body.instruction_id);
 
    sendWhatsAppMessage();
+   console.log("done");
     while (receivedData === null) {
         await new Promise(resolve => setTimeout(resolve, 1000)); 
-    
       }
-
+      console.log("hiii");
      console.log("hello"+ receivedData);
     const data = receivedData;
     
