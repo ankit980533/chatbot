@@ -114,9 +114,9 @@ app.post('/issueRaised',async(req,res)=>{
 
   await sendWhatsAppMessage();
    console.log("done");
-    while (receivedData === null) {
-        await new Promise(resolve => setTimeout(resolve, 1000)); 
-      }
+    // while (receivedData === null) {
+    //     await new Promise(resolve => setTimeout(resolve, 1000)); 
+    //   }
       console.log("hiii");
      console.log("hello"+ receivedData);
     const data = receivedData;
