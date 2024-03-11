@@ -8,7 +8,7 @@ const http=require('http');
 // Middleware to parse JSON request bodies
 app.use(bodyParser.json());
 const pool = require('./db');
-function sendWhatsAppMessage() {
+async function sendWhatsAppMessage() {
   const data = JSON.stringify({
      recipient_number: "919122058062",
      integrated_number: "918287227230",
@@ -112,7 +112,7 @@ app.post('/issueRaised',async(req,res)=>{
 
     console.log(req.body.instruction_id);
 
-   sendWhatsAppMessage();
+  await sendWhatsAppMessage();
    console.log("done");
     while (receivedData === null) {
         await new Promise(resolve => setTimeout(resolve, 1000)); 
