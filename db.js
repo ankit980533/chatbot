@@ -1,9 +1,10 @@
-const {Pool}=require('pg');
-const pool=new Pool({
-  user: 'postgres',
-    host: 'localhost' ,
-     database: 'postgres',
-     password: 'Ankit@1908',
-     port: 5432
-})
-module.exports =pool;
+const mongoose = require('mongoose');
+
+// Define schema for message data
+const messageSchema = new mongoose.Schema({
+  messageId: { type: String, required: true },
+  instructionId: { type: String, required: true },
+});
+
+// Create a model from the schema
+const Message = mongoose.model('Message', messageSchema);

@@ -4,11 +4,16 @@ const bodyParser = require('body-parser');
 const axios=require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const mongoose=require('mongoose');
+const Message=require('./db');
 const http=require('http');
 // Middleware to parse JSON request bodies
 app.use(bodyParser.json());
-const pool = require('./db');
-async function sendWhatsAppMessage() {
+mongoose.connect("mongodb+srv://user:ankitraj@cluster0.ky8l28e.mongodb.net/")
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Error connecting to MongoDB:', err));
+  
+  async function sendWhatsAppMessage() {
   const data = JSON.stringify({
      recipient_number: "919122058062",
      integrated_number: "918287227230",
@@ -106,7 +111,8 @@ app.post('/outgoing', (req, res) => {
   }
 });
 app.post('/issueRaised',async(req,res)=>{
-  try {
+  try 
+  {
 const instruction_id=req.body.instruction_id;
 
     console.log(req.body.instruction_id);
@@ -141,6 +147,15 @@ const instruction_id=req.body.instruction_id;
     //   instruction_id
     // ]);
     // console.log(rows[0]);
+    const newMessage = new Message({
+      messageId: data.message_uuid,
+      instructionId: req.body.instruction_id
+    });
+
+    // Save the new message to MongoDB
+    await newMessage.save();
+
+    console.log('Message saved to MongoDB:', newMessage);
 
     res.status(200).send('Data received and processed successfully');
 } catch (error) {
