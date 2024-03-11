@@ -133,8 +133,8 @@ const instruction_id=req.body.instruction_id;
     
     // // receivedData = null;
     console.log('Data received:', data);
-    const message_id=receivedData.message_uuid;
-    console.log(message_id +" terst ");
+    // const message_id=receivedData.message_uuid;
+    // console.log(message_id +" terst ");
     // const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
     //   message_id,
     //   instruction_id
