@@ -106,7 +106,7 @@ app.post('/outgoing', (req, res) => {
 });
 app.post('/issueRaised',async(req,res)=>{
   try {
-
+const instruction_id=req.body.instruction_id;
 
     console.log(req.body.instruction_id);
 
