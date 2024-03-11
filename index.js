@@ -119,14 +119,16 @@ app.post('/issueRaised',async(req,res)=>{
 
     console.log("hello"+ receivedData);
     const data = receivedData;
+    
+    
+    receivedData = null;
+    console.log('Data received:', data);
     const message_uuid=data.message_uuid;
     const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
       message_uuid,
       instruction_id
     ]);
     console.log(rows[0]);
-    receivedData = null;
-    console.log('Data received:', data);
 
     res.status(200).send('Data received and processed successfully');
 } catch (error) {
