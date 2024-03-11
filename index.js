@@ -87,18 +87,18 @@ app.post('/incoming', (req, res) => {
     res.status(200).send(message);
 });
 
-let receivedData=null;
-
+// let receivedData=null;
+let receivedDataPromise = null;
 app.post('/outgoing', (req, res) => {
 
   try {
   const  message  = req.body;
-   receivedData=message;
+  receivedDataPromise = Promise.resolve(message);
    console.log(req.body);
    console.log("hiii");
    console.log(req.body.message_uuid);
-   console.log(receivedData.message_uuid);
-   res.status(200).send(receivedData);
+  //  console.log(receivedData.message_uuid);
+   res.status(200).send(message);
   } catch (error) {
     console.log(error);
     res.status(400).json(error);
@@ -115,6 +115,17 @@ app.post('/issueRaised',async(req,res)=>{
     // while (receivedData === null) {
     //     await new Promise(resolve => setTimeout(resolve, 100)); 
     //   }
+    const receivedData = await receivedDataPromise; // Wait for data to be received
+
+    console.log("hello" + receivedData);
+
+    if (!receivedData) {
+      console.log('No data received yet');
+      res.status(400).send('No data received yet');
+      return;
+    }
+
+
       console.log("hiii");
      console.log("hello"+ receivedData);
     const data = receivedData;
