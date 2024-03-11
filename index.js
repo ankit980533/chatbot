@@ -117,7 +117,7 @@ app.post('/issueRaised',async(req,res)=>{
     //   }
     const receivedData = await receivedDataPromise; // Wait for data to be received
 
-    console.log("hello" + receivedData);
+    //console.log("hello" + receivedData);
 
     // if (!receivedData) {
     //   console.log('No data received yet');
@@ -133,12 +133,12 @@ app.post('/issueRaised',async(req,res)=>{
     
     // receivedData = null;
     console.log('Data received:', data);
-    // const message_uuid=data.message_uuid;
-    // const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
-    //   message_uuid,
-    //   instruction_id
-    // ]);
-    // console.log(rows[0]);
+    const message_uuid=data.message_uuid;
+    const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
+      message_uuid,
+      instruction_id
+    ]);
+    console.log(rows[0]);
 
     res.status(200).send('Data received and processed successfully');
 } catch (error) {
