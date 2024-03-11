@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const http=require('http');
 // Middleware to parse JSON request bodies
 app.use(bodyParser.json());
-
+const pool = require('./db');
 function sendWhatsAppMessage() {
   const data = JSON.stringify({
      recipient_number: "919122058062",
@@ -77,14 +77,14 @@ function sendWhatsAppMessage() {
   req.end()
   }
 
-
+let incomingRecieved=null;
 
 // Route to handle incoming messages
 app.post('/incoming', (req, res) => {
     const message = req.body;
     console.log("Received message:", message);
     
-   
+     
     
     res.status(200).send(message);
 });
@@ -109,6 +109,7 @@ app.post('/outgoing', (req, res) => {
 app.post('/issueRaised',async(req,res)=>{
   try {
     console.log(req.body.instruction_id);
+
    sendWhatsAppMessage();
    
   
@@ -118,9 +119,15 @@ app.post('/issueRaised',async(req,res)=>{
 
     console.log("hello"+ receivedData);
     const data = receivedData;
+    const message_uuid=data.message_uuid;
+    const { rows } = await pool.query('INSERT INTO whatsapp(message_id, instruction_id) VALUES($1, $2) RETURNING *', [
+      message_uuid,
+      instruction_id
+    ]);
+    console.log(rows[0]);
     receivedData = null;
     console.log('Data received:', data);
-    
+
     res.status(200).send('Data received and processed successfully');
 } catch (error) {
     console.error('Error receiving or processing data:', error);
