@@ -77,9 +77,7 @@ async function sendWhatsAppMessage() {
   req.end()
   }
 
-//let incomingRecieved=null;
 
-// Route to handle incoming messages
 app.post('/incoming', (req, res) => {
     const message = req.body;
     console.log("Received message:", message);
@@ -115,7 +113,7 @@ app.post('/issueRaised',async(req,res)=>{
   await sendWhatsAppMessage();
    console.log("done");
     while (receivedData === null) {
-        await new Promise(resolve => setTimeout(resolve, 1000)); 
+        await new Promise(resolve => setTimeout(resolve, 100)); 
       }
       console.log("hiii");
      console.log("hello"+ receivedData);
