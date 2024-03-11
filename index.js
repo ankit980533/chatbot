@@ -11,7 +11,7 @@ const pool = require('./db');
 function sendWhatsAppMessage() {
   const data = JSON.stringify({
      recipient_number: "919122058062",
-     integrated_number: "918287227232",
+     integrated_number: "918287227230",
      content_type: "interactive",
      interactive: {
        type: "button",
